@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
 import com.vbv.pagging3.data.model.Product
+import com.vbv.pagging3.ui.screen.home.customwidget.HomeProductItem
 import com.vbv.pagging3.ui.screen.home.viewmodel.HomeViewModel
 import com.vbv.pagging3.ui.screen.home.viewmodel.UiState
 
@@ -58,26 +59,8 @@ fun HomeScreen(modifier: Modifier,viewModel: HomeViewModel = viewModel()){
 @Composable
 fun ProductListing(products: List<Product>) {
     LazyColumn(Modifier.fillMaxSize()) {
-        items(count = products.size){position->
-            ElevatedCard(modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp).fillMaxWidth(), elevation = CardDefaults.elevatedCardElevation(5.dp),) {
-                Row() {
-                    AsyncImage(
-                        model = products[position].thumbnail,
-                        contentDescription = ""
-                    )
-                    Column(Modifier.padding(8.dp)) {
-                        Text(text = products[position].title, style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 16.sp))
-
-                        Spacer(Modifier.height(8.dp))
-
-                        Text(text = products[position].category, style = TextStyle(color = Color.Black, fontWeight = FontWeight.SemiBold, fontSize = 14.sp))
-
-                        Spacer(Modifier.height(8.dp))
-
-                        Text(text = products[position].description, style = TextStyle(color = Color.Black, fontWeight = FontWeight.Normal, fontSize = 12.sp))
-                    }
-                }
-            }
+        items(count = products.size){index->
+            HomeProductItem(products[index])
         }
     }
 }
