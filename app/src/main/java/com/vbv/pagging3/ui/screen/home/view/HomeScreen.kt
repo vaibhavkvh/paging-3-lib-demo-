@@ -22,18 +22,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
 import com.vbv.pagging3.data.model.Product
 import com.vbv.pagging3.ui.screen.home.viewmodel.HomeViewModel
 import com.vbv.pagging3.ui.screen.home.viewmodel.UiState
 
 @Composable
-fun HomeScreen(modifier: Modifier){
+fun HomeScreen(modifier: Modifier,viewModel: HomeViewModel = viewModel()){
 
-    val viewModel = HomeViewModel()
+
     val uiState by viewModel.uiState.collectAsState()
     Scaffold(modifier) {
         Box(Modifier.fillMaxSize().padding(it), contentAlignment = Alignment.Center){
